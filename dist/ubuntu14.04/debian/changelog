@@ -1,4 +1,4 @@
-libsysemul (0.0.1~ubuntu14.04) unstable; urgency=medium
+libsysemul (0.0.1~ubuntu14.04) foo/bar; urgency=medium
 
   * Initial release
 
