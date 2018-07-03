@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run:
+          name: Install make
+          command: apt-get update -qq && apt-get install -y make
+      - run:
+          name: build
+          command: make build_before && make pkg-build && pkg-test
