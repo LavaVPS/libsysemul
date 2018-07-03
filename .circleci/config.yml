@@ -10,4 +10,4 @@ jobs:
           command: apt-get update -qq && apt-get install -y make
       - run:
           name: build
-          command: make build_before && make pkg-build && pkg-test
+          command: make build_before && make pkg-build && make pkg-test
