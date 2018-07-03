@@ -9,5 +9,11 @@ jobs:
           name: Install make
           command: apt-get update -qq && apt-get install -y make
       - run:
-          name: build
-          command: make build_before && make pkg-build && make pkg-test
+          name: Build before
+          command: make build_before
+      - run:
+          name: Build package
+          command: make pkg-build
+      - run:
+          name: Running tests
+          command: make pkg-test

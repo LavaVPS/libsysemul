@@ -1,12 +1,16 @@
 language: c
 sudo: enabled
-jobs:
+matrix:
   include:
-    - stage: build
-      dist:
-       - precise
-       - trusty
-      script:
-       - sudo make build_before
-       - sudo make pkg-build
-       - sudo make pkg-test
+    - os: linux
+      dist: trusty
+      sudo: required
+    - os: linux
+      dist: precise
+      sudo: required
+before_install:
+  - sudo make build_before
+script:
+  - sudo make pkg-build
+  - sudo make pkg-test
+sudo: required
