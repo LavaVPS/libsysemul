@@ -1,0 +1,2 @@
+# this library contains both 64 and 32 bit symbols for compatibility
+libsysemul0 [i386]: binary-file-built-without-LFS-support lib/i386-linux-gnu/libsysemul.so.0
