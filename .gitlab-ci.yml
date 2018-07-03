@@ -1,0 +1,11 @@
+build:
+  stage: "build"
+  tags:
+    - "docker"
+  before_script:
+    - "apt-get update -qq && apt-get install -y make"
+    - "make build_before"
+  script:
+    - "make build"
+  # gitlab can't continue stage on same node/build results, so place them here
+    - "make test"
