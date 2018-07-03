@@ -3,6 +3,9 @@ sudo: enabled
 jobs:
   include:
     - stage: build
+      dist:
+       - precise
+       - trusty
       script:
        - sudo make build_before
        - sudo make pkg-build
