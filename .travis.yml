@@ -4,5 +4,5 @@ jobs:
   include:
     - stage: build
       script:
-       - make build_before
-       - make foo
+       - sudo make build_before
+       - sudo make foo
