@@ -1,28 +1,54 @@
-N=libsysemul
-URL=http://$(DEPLOY_KEY):@robert.lavavps.lt:21182
+VERSION = 0.0.1
+N = libsysemul
+N0 = $(N)0
+URL = http://$(DEPLOY_KEY):@robert.lavavps.lt:21182
+DEB_BUILD_ARCH ?= $(shell dpkg-architecture -qDEB_BUILD_ARCH)
+_DISTRIB_VERSION ?= $(shell ./os-version.sh)
+DISTRIB_VERSION := $(_DISTRIB_VERSION)
 
 all:
+	$(MAKE) -C src all
 
-dependencies-install:
-	apt-get update -qq
-	apt-get install -y gcc-multilib curl
+install:
+	$(MAKE) -C src install
+
+clean:
+	$(MAKE) -C src clean
+
+ci-all:
+	$(MAKE) build_before
+	$(MAKE) pkg-build
+	$(MAKE) pkg-upload
+	$(MAKE) pkg-test
 
 build_before:
-	make dependencies-install
+	$(MAKE) pkg-dependencies-install
 
-build: build_bin build_deploy
+pkg-dependencies-install:
+	apt-get update -qq
+	apt-get install -y dpkg-dev lintian
+	apt-get install -y debhelper
+	apt-get install -y gcc-multilib curl
 
-build_bin:
-	$(MAKE) -C src
+pkg-build:
+	cd dist/`./os-version.sh` && dpkg-buildpackage -us -uc
 
-build_deploy:
-	@echo Uploading...
-	@curl $(URL)/$(N)/$(CI_BUILD_ID)/x86/libsysemul.so -F img=@src/x86/libsysemul.so
-	@curl $(URL)/$(N)/$(CI_BUILD_ID)/x64/libsysemul.so -F img=@src/x64/libsysemul.so
-	md5sum src/x86/libsysemul.so
-	md5sum src/x64/libsysemul.so
+pkg-upload: F=dist/$(N0)_$(VERSION)~$(DISTRIB_VERSION)_$(DEB_BUILD_ARCH).deb
+pkg-upload:
+	# hide DEPLOY_KEY
+	@echo Uploading $(F)
+	@curl $(URL)/$(N)/$(CI_BUILD_ID)/$(F) -F img=@$(F)
+	md5sum $(F)
 
 test:
-	./test.sh
+	./test-00.sh
 
-.PHONY: all dependencies-install build_before build build_bin build_deploy test
+pkg-test: test
+	lintian -EviIL +pedantic dist/$(N)_$(VERSION)~$(DISTRIB_VERSION)_$(DEB_BUILD_ARCH).changes
+
+.PHONY: all install clean build_before pkg-dependencies-install pkg-build pkg-upload pkg-test test
+
+# aliases
+distclean: clean
+
+.PHONY: distclean

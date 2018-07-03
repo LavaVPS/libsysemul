@@ -1,0 +1,15 @@
+Source: libsysemul
+Section: libs
+Priority: optional
+Maintainer: lavavps <deb-packages@a.lavavps>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.1.4
+
+Package: libsysemul0
+Architecture: amd64 i386
+#Depends: ${x-shlibs:x-Depends}, ${x-misc:x-Depends}, lsb-base (>= 3.0-6)
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: system call emulation library
+ Emulates some missing system calls. Useful to run newer distribution
+ on older Linux kernel.
+ Maintained by LavaVPS

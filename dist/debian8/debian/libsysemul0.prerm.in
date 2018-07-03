@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+LIBNAME=/lib/@@DEB_HOST_MULTIARCH@@/libsysemul.so.0
+
+case "$1" in
+	remove|upgrade|deconfigure)
+		if grep -vqs -e "^${LIBNAME}$" /etc/ld.so.preload
+		then
+			TEMPFILE=`mktemp`
+			grep -v -e "^${LIBNAME}$" /etc/ld.so.preload > "$TEMPFILE"
+			mv -f "$TEMPFILE" /etc/ld.so.preload
+		else
+			rm -f /etc/ld.so.preload
+		fi
+		;;
+esac
+
+#DEBHELPER#
+
+exit 0

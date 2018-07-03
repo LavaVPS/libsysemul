@@ -3,7 +3,6 @@
 #include <sys/resource.h>
 #include <sys/syscall.h>
 #include <signal.h>
-#include <dlfcn.h>
 #include <errno.h>
 #include <stdint.h>
 

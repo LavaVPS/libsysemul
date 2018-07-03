@@ -1,29 +1,30 @@
-TARGET	+= x86/libsysemul.so
-TARGET	+= x64/libsysemul.so
-CFLAGS	+= -Wall
-CFLAGS	+= -O3
-CFLAGS	+= -DPIC -fPIC -D_REENTRANT
-LDSFLAGS += -lc -lgcc -nostdlib -ldl
+NAME = sysemul
+LIBNAME = lib$(NAME)
+TARGET += $(LIBNAME).so
+CFLAGS += -W
+CFLAGS += -Wall
+CFLAGS += -O3
+CFLAGS += -DPIC -fPIC -D_REENTRANT
+CFLAGS += -Wl,-soname,$(LIBNAME).so.0
+LDFLAGS += -lc -lgcc -nostdlib
+libdir ?= /lib
 
-all: $(TARGET)
+all: $(TARGET) test-prlimit64
 
-x86/%.o: %.c x86
-	$(CC) -m32 -c $(CFLAGS) $< -o $@
+%.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
 
-x86/%.so: x86/%.o x86
-	$(CC) -m32 $(CFLAGS) -shared $< -o $@ $(LDSFLAGS)
+%.so: %.o
+	$(CC) $(CFLAGS) -shared $< -o $@ $(LDFLAGS)
 
-x64/%.o: %.c x64
-	$(CC) -m64 -c $(CFLAGS) $< -o $@
+test-prlimit64: test-prlimit64.c
+	$(CC) -o $@ $^ -W -Wall -O3
 
-x64/%.so: x64/%.o x64
-	$(CC) -m64 $(CFLAGS) -shared $< -o $@ $(LDSFLAGS)
-
-x86:
-	mkdir $@
-
-x64:
-	mkdir $@
+install:
+	install -o root -g root -m 755 -d $(DESTDIR)${libdir}/
+	install -o root -g root -m 755 $(LIBNAME).so $(DESTDIR)${libdir}/$(LIBNAME).so.0
 
 clean:
 	$(RM) $(TARGET)
+
+.PHONY: all install clean

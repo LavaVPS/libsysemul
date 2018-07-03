@@ -1,11 +1,63 @@
-build:
+build:debian-7-i386:
+  image: "localhost:5000/debian-7-i386"
   stage: "build"
   tags:
     - "docker"
-  before_script:
-    - "apt-get update -qq && apt-get install -y make"
-    - "make build_before"
   script:
-    - "make build"
-  # gitlab can't continue stage on same node/build results, so place them here
-    - "make test"
+    - "apt-get update -qq && apt-get install -y make && make ci-all"
+
+build:debian-7-amd64:
+  image: "localhost:5000/debian-7-amd64"
+  stage: "build"
+  tags:
+    - "docker"
+  script:
+    - "apt-get update -qq && apt-get install -y make && make ci-all"
+
+build:debian-8-i386:
+  image: "localhost:5000/debian-8-i386"
+  stage: "build"
+  tags:
+    - "docker"
+  script:
+    - "apt-get update -qq && apt-get install -y make && make ci-all"
+
+build:debian-8-amd64:
+  image: "localhost:5000/debian-8-amd64"
+  stage: "build"
+  tags:
+    - "docker"
+  script:
+    - "apt-get update -qq && apt-get install -y make && make ci-all"
+
+build:debian-9-i386:
+  image: "localhost:5000/debian-9-i386"
+  stage: "build"
+  tags:
+    - "docker"
+  script:
+    - "apt-get update -qq && apt-get install -y make && make ci-all"
+
+build:debian-9-amd64:
+  image: "localhost:5000/debian-9-amd64"
+  stage: "build"
+  tags:
+    - "docker"
+  script:
+    - "apt-get update -qq && apt-get install -y make && make ci-all"
+
+build:debian-10-i386:
+  image: "localhost:5000/debian-10-i386"
+  stage: "build"
+  tags:
+    - "docker"
+  script:
+    - "apt-get update -qq && apt-get install -y make && make ci-all"
+
+build:debian-10-amd64:
+  image: "localhost:5000/debian-10-amd64"
+  stage: "build"
+  tags:
+    - "docker"
+  script:
+    - "apt-get update -qq && apt-get install -y make && make ci-all"

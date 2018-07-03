@@ -1,0 +1,7 @@
+libsysemul.so.0 libsysemul0 #MINVER#
+ getrlimit64@Base 0.0.1~debian9
+ getrlimit@Base 0.0.1~debian9
+ prlimit64@Base 0.0.1~debian9
+ prlimit@Base 0.0.1~debian9
+ setrlimit64@Base 0.0.1~debian9
+ setrlimit@Base 0.0.1~debian9
