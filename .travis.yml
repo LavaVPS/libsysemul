@@ -5,4 +5,5 @@ jobs:
     - stage: build
       script:
        - sudo make build_before
-       - sudo make foo
+       - sudo make pkg-build
+       - sudo make pkg-test
