@@ -3,4 +3,5 @@ sudo: enabled
 jobs:
   include:
     - stage: build
+      script: make build_before
       script: make foo
