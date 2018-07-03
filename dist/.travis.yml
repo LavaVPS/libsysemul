@@ -1,2 +1,6 @@
 language: c
 sudo: enabled
+jobs:
+  include:
+    - stage: build
+      script: make foo
