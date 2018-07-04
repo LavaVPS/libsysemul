@@ -1,0 +1,39 @@
+# Solano CI configuration for solano-phpunit
+#
+# Copyright (c) 2015 Solano Labs All Rights Reserved
+
+tests:
+  # Test all excluding E2E group
+  - type: phpunit
+    mode: parallel
+    output: exit-status
+    command: ./solano-phpunit  # Default location when added by composer: vendor/bin/solano-phpunit
+    config: phpunit.xml        # If not supplied, defaults are checked in order: phpunit.xml, phpunit.xml.dist
+    files:
+      - tests/**Test.php
+  # Test excluding all test files
+  - ./solano-phpunit --group not_set
+  - ./tests/_files/fatal_in_bootstrap.sh
+  - ./tests/_files/fatal_in_test.sh
+  - ./tests/_files/fatal_in_src.sh
+  - ./tests/_files/pass_and_fatal_in_tests.sh
+
+php:
+  php_version:
+    SPLIT:
+      - '5.5'
+      - '7.0'
+
+hooks:
+  pre_setup: |
+    set -e # Exit on error
+    composer install
+    # Ensure jq is installed for verifying fatal errors are handled as expected
+    if [[ ! -f "$HOME/bin/jq" ]]; then
+      wget -O $HOME/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+      chmod +x $HOME/bin/jq # $HOME/bin is in $PATH
+    fi
+
+cache:
+  # Ensure each build pulls fresh dependencies to check for requirements breaking
+  nocache: true

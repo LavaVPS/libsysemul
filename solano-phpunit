@@ -1,0 +1,39 @@
+#!/usr/bin/env php
+<?php
+/*
+ * This file is part of Solano-PHPUnit.
+ *
+ * (c) Solano Labs https://www.solanolabs.com/
+ *
+ */
+
+if (!ini_get('date.timezone')) {
+    ini_set('date.timezone', 'UTC');
+}
+
+foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
+    if (file_exists($file)) {
+        define('SOLANOLABS_COMPOSER_INSTALL', $file);
+        break;
+    }
+}
+
+unset($file);
+
+if (!defined('SOLANOLABS_COMPOSER_INSTALL')) {
+    fwrite(STDERR,
+        'You need to set up the project dependencies using the following commands:' . PHP_EOL .
+        'wget http://getcomposer.org/composer.phar' . PHP_EOL .
+        'php composer.phar install' . PHP_EOL
+    );
+    die(1);
+}
+
+require SOLANOLABS_COMPOSER_INSTALL;
+
+// If PHP version 5.2+, try to catch fatal errors
+if (function_exists('register_shutdown_function')) {
+    include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . "ErrorHandling.php");
+}
+
+SolanoLabs_PHPUnit_Command::main();
