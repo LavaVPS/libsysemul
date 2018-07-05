@@ -26,7 +26,7 @@ build_before:
 
 pkg-dependencies-install:
 	apt-get update -qq
-	apt-get install -y dpkg-dev lintian
+	apt-get install -y dpkg-dev fakeroot lintian
 	apt-get install -y debhelper
 	apt-get install -y gcc-multilib curl
 
