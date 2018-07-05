@@ -3,23 +3,23 @@ version: '1.0'
 
 steps:
   install-make:
-    type: build
+    image: mwendler/cowsay
     description: Install make
     commands:
         - apt-get update -qq
         - apt-get install -y make
   build-before:
-    type: build
+    image: mwendler/cowsay
     description: make build_before
     commands:
         - make build_before
   pkg-build:
-    type: build
+    image: mwendler/cowsay
     description: make pkg-build
     commands:
         - make pkg-build
   pkg-test:
-    type: build
+    image: mwendler/cowsay
     description: make pkg-test
     commands:
         - make pkg-test
