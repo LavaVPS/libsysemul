@@ -2,7 +2,7 @@ version: '1.0'
 
 
 steps:
-  build-debian-8:
+  build_debian_8:
     image: debian:8-slim
     description: build-debian-8
     commands:
@@ -11,7 +11,7 @@ steps:
         - make build_before
         - make pkg-build
         - make pkg-test
-  build-debian-9:
+  build_debian_9:
     image: debian:9-slim
     description: build-debian-9
     commands:
@@ -20,7 +20,7 @@ steps:
         - make build_before
         - make pkg-build
         - make pkg-test
-  build-debian-10:
+  build_debian_10:
     image: debian:buster-slim
     description: build-debian-10
     commands:

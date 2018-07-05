@@ -7,3 +7,8 @@
 [![Build Status](https://semaphoreci.com/api/v1/lavavps/libsysemul/branches/master/badge.svg)](https://semaphoreci.com/lavavps/libsysemul)
 
 [ ![Codeship Status for LavaVPS/libsysemul](https://app.codeship.com/projects/582a19e0-621d-0136-5f75-52637fa72354/status?branch=master)](https://app.codeship.com/projects/296740)
+
+[![Codefresh build status]( https://g.codefresh.io/api/badges/build?repoOwner=LavaVPS&repoName=libsysemul&branch=master&pipelineName=libsysemul&accountName=lavavps&type=cf-1)]( https://g.codefresh.io/repositories/LavaVPS/libsysemul/builds?filter=trigger:build;branch:master;service:5b3d77eac1bcb86bc8426865~libsysemul)
+
+[![Build status](https://ci.appveyor.com/api/projects/status/1x4yoapi7h75g7jw?svg=true)](https://ci.appveyor.com/project/LavaVPS/libsysemul)
+

@@ -1,0 +1,20 @@
+version: 0.0.1.{build}
+
+image:
+  - Ubuntu
+  - Previous Ubuntu
+build:
+  verbosity: minimal
+init:
+  - sh: |
+    id
+    apt-get update
+install:
+  - sh: |
+    apt-get install make
+build_script:
+  - sh: |
+    make pkg-build
+test_script:
+  - sh: |
+    make pkg-test
