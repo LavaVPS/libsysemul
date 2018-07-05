@@ -7,14 +7,14 @@ build:
   verbosity: minimal
 init:
   - sh: |
-    id
-    apt-get update
+      id
+      apt-get update
 install:
   - sh: |
-    apt-get install make
+      apt-get install make
 build_script:
   - sh: |
-    make pkg-build
+      make pkg-build
 test_script:
   - sh: |
-    make pkg-test
+      make pkg-test
