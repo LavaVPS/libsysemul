@@ -2,5 +2,4 @@
 
 [![CircleCI](https://circleci.com/gh/LavaVPS/libsysemul/tree/test3.svg?style=svg)](https://circleci.com/gh/LavaVPS/libsysemul/tree/test3)
 
-[![Solanolabs](https://ci.solanolabs.com/LavaVPS/libsysemul/badges/branches/master?badge_token=90910a13f88bea21148a023bcb74c090181ed4b1)](https://ci.solanolabs.com/LavaVPS/libsysemul/suites/853590)
-
+[![wercker status](https://app.wercker.com/status/3516ee7150feb566649cc241c01ec64d/s/master "wercker status")](https://app.wercker.com/project/byKey/3516ee7150feb566649cc241c01ec64d)
