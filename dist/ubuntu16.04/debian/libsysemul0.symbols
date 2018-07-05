@@ -1,0 +1,7 @@
+libsysemul.so.0 libsysemul0 #MINVER#
+ getrlimit64@Base 0.0.1~ubuntu16.04
+ getrlimit@Base 0.0.1~ubuntu16.04
+ prlimit64@Base 0.0.1~ubuntu16.04
+ prlimit@Base 0.0.1~ubuntu16.04
+ setrlimit64@Base 0.0.1~ubuntu16.04
+ setrlimit@Base 0.0.1~ubuntu16.04

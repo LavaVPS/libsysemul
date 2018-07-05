@@ -2,7 +2,6 @@ version: 0.0.1.{build}
 
 image:
   - Ubuntu
-  - Previous Ubuntu
 build:
   verbosity: minimal
 init:
