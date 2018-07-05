@@ -23,17 +23,17 @@ build:
     - script:
         name: Install make
         code: |
-	  apt-get update -qq
-	  apt-get install -y make
+          apt-get update -qq
+          apt-get install -y make
     - script:
         name: make build_before
         code: |
-	  make build_before
+          make build_before
     - script:
         name: make pkg-build
         code: |
-	  make pkg-build
+          make pkg-build
     - script:
         name: make pkg-test
         code: |
-	  make pkg-test
+          make pkg-test
