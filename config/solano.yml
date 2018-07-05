@@ -1,8 +1,0 @@
-tests:
-  - 'make pkg-test'
-coverage:
-  version: 2
-  endabled: true
-hooks:
-  pre_setup: 'apt-get update -qq && apt-get install -y make'
-  post_setup: 'make pkg-build'
