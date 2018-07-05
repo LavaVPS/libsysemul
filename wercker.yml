@@ -21,6 +21,19 @@ build:
     # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     - script:
-        name: echo
+        name: Install make
         code: |
-          echo "hello world!"
+	  apt-get update -qq
+	  apt-get install -y make
+    - script:
+        name: make build_before
+        code: |
+	  make build_before
+    - script:
+        name: make pkg-build
+        code: |
+	  make pkg-build
+    - script:
+        name: make pkg-test
+        code: |
+	  make pkg-test
