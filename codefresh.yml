@@ -4,22 +4,22 @@ version: '1.0'
 steps:
   install-make:
     type: build
-      description: Install make
-      commands:
-          - apt-get update -qq
-          - apt-get install -y make
+    description: Install make
+    commands:
+        - apt-get update -qq
+        - apt-get install -y make
   build-before:
     type: build
-      description: make build_before
-      commands:
-          - make build_before
+    description: make build_before
+    commands:
+        - make build_before
   pkg-build:
     type: build
-      description: make pkg-build
-      commands:
-          - make pkg-build
+    description: make pkg-build
+    commands:
+        - make pkg-build
   pkg-test:
     type: build
-      description: make pkg-test
-      commands:
-          - make pkg-test
+    description: make pkg-test
+    commands:
+        - make pkg-test
