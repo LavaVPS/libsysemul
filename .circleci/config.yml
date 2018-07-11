@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-jessie:
+  build:
     docker:
       - image: debian:jessie
     environment:
