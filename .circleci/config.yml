@@ -11,7 +11,9 @@ jobs:
           command: apt-get update -qq && apt-get install -y git make
       - run:
           name: Checkout
-          command: pwd && cd /root/project && pwd && git clone "$CIRCLE_REPOSITORY_URL" .
+          command: |
+	    git clone "$CIRCLE_REPOSITORY_URL" .
+	    git reset --hard "$CIRCLE_SHA1"
       - run:
           name: Build before
           command: make build_before
