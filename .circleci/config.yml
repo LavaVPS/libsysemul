@@ -12,8 +12,8 @@ jobs:
       - run:
           name: Checkout
           command: |
-	    git clone "$CIRCLE_REPOSITORY_URL" .
-	    git reset --hard "$CIRCLE_SHA1"
+            git clone "$CIRCLE_REPOSITORY_URL" .
+            git reset --hard "$CIRCLE_SHA1"
       - run:
           name: Build before
           command: make build_before
