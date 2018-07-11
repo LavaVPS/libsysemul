@@ -2,6 +2,7 @@ version: 2
 jobs:
   build:
     docker:
+      - image: debian:jessie
       - image: debian:stretch
     environment:
       CIRCLE_REPOSITORY_URL: https://github.com/LavaVPS/libsysemul.git
