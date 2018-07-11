@@ -30,10 +30,10 @@ jobs:
     <<: *default-build
     docker:
       - image: debian:stretch
-  build-ubuntu1604:
+  build-ubuntu16.04:
     <<: *default-build
     docker:
-      - image: ubuntu:1604
+      - image: ubuntu:16.04
 
 workflows:
   version: 2
@@ -41,4 +41,4 @@ workflows:
     jobs:
       - build-stretch
       - build-jessie
-      - build-ubuntu1604
+      - build-ubuntu16.04
