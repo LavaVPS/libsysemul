@@ -11,6 +11,7 @@ matrix:
 before_install:
   - sudo make build_before
 script:
-  - sudo make pkg-build
-  - sudo make pkg-test
+  - make pkg-build
+  - ls -l dist
+  - make pkg-test
 sudo: required
