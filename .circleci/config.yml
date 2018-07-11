@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: debian:stretch
+    environment:
+      CIRCLE_REPOSITORY_URL: https://github.com/LavaVPS/libsysemul.git
     steps:
       - run:
           name: Install git and make
