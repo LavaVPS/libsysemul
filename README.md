@@ -12,3 +12,9 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/1x4yoapi7h75g7jw?svg=true)](https://ci.appveyor.com/project/LavaVPS/libsysemul)
 
+
+
+[![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/LavaVPS/libsysemul/test3.svg?style=plastic)](https://bitbucket.org/LavaVPS/testlibsysemul/src/test3/)
+
+
+
