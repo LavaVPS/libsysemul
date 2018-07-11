@@ -23,11 +23,11 @@ default-build: &default-build
 version: 2
 jobs:
   build-jessie:
-    <<: default-build
+    <<: *default-build
     docker:
       - image: debian:jessie
   build-stretch:
-    <<: default-build
+    <<: *default-build
     docker:
       - image: debian:stretch
 
