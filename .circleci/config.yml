@@ -9,9 +9,7 @@ jobs:
           command: apt-get update -qq && apt-get install -y git make
       - run:
           name: Checkout
-          command: cd /root/project
-	  command: pwd
-	  command: git clone "$CIRCLE_REPOSITORY_URL" .
+          command: pwd && cd /root/project && pwd && git clone "$CIRCLE_REPOSITORY_URL" .
       - run:
           name: Build before
           command: make build_before
