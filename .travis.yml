@@ -12,6 +12,5 @@ before_install:
   - sudo make build_before
 script:
   - make pkg-build
-  - ls -l dist
   - make pkg-test
 sudo: required
