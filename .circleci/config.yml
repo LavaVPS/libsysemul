@@ -3,6 +3,13 @@ jobs:
   build:
     docker:
       - image: debian:jessie
+    steps:
+      - run:
+          name: foo
+          command: id
+  build-jessie:
+    docker:
+      - image: debian:jessie
     environment:
       CIRCLE_REPOSITORY_URL: https://github.com/LavaVPS/libsysemul.git
     steps:
@@ -46,3 +53,9 @@ jobs:
       - run:
           name: Running tests
           command: make pkg-test
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-stretch
+      - build-jessie
