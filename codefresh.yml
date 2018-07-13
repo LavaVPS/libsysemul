@@ -1,31 +1,21 @@
-version: '1.0'
+default-steps: &default-steps
+  commands:
+      - apt-get update -qq
+      - apt-get install -y make
+      - make ci-build
 
+version: '1.0'
 
 steps:
   build_debian_8:
+    <<: *default-steps
     image: debian:8-slim
     description: build-debian-8
-    commands:
-        - apt-get update -qq
-        - apt-get install -y make
-        - make build_before
-        - make pkg-build
-        - make pkg-test
   build_debian_9:
+    <<: *default-steps
     image: debian:9-slim
     description: build-debian-9
-    commands:
-        - apt-get update -qq
-        - apt-get install -y make
-        - make build_before
-        - make pkg-build
-        - make pkg-test
   build_debian_10:
+    <<: *default-steps
     image: debian:buster-slim
     description: build-debian-10
-    commands:
-        - apt-get update -qq
-        - apt-get install -y make
-        - make build_before
-        - make pkg-build
-        - make pkg-test

@@ -8,9 +8,6 @@ matrix:
     - os: linux
       dist: precise
       sudo: required
-before_install:
-  - sudo make build_before
 script:
-  - make pkg-build
-  - make pkg-test
+  - make ci-build
 sudo: required

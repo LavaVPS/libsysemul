@@ -15,6 +15,11 @@ install:
 clean:
 	$(MAKE) -C src clean
 
+ci-build:
+	$(MAKE) build_before
+	$(MAKE) pkg-build
+	$(MAKE) pkg-test
+
 ci-all:
 	$(MAKE) build_before
 	$(MAKE) pkg-build
@@ -22,13 +27,18 @@ ci-all:
 	$(MAKE) pkg-test
 
 build_before:
-	$(MAKE) pkg-dependencies-install
+	if [ $$EUID -ne 0 ]; \
+	then \
+		sudo $(MAKE) pkg-dependencies-install; \
+	else \
+		$(MAKE) pkg-dependencies-install; \
+	fi
 
 pkg-dependencies-install:
 	apt-get update -qq
 	apt-get install -y dpkg-dev fakeroot lintian
 	apt-get install -y debhelper
-	apt-get install -y gcc-multilib curl
+	apt-get install -y curl
 
 pkg-build:
 	cd dist/`./os-version.sh` && dpkg-buildpackage -us -uc
