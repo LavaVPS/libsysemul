@@ -12,7 +12,7 @@ default-build: &default-build
           git reset --hard "$CIRCLE_SHA1"
     - run:
         name: Build before
-        command: make build_before
+        command: set && make build_before
     - run:
         name: Build package
         command: make pkg-build
