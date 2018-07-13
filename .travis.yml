@@ -9,5 +9,6 @@ matrix:
       dist: precise
       sudo: required
 script:
+  - set
   - make ci-build
 sudo: required
