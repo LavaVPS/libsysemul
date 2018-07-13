@@ -6,4 +6,4 @@ pipelines:
         script:
           - apt-get update -qq
           - apt-get install -y make
-	  - make ci-build
+          - make ci-build
