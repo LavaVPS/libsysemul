@@ -27,7 +27,7 @@ ci-all:
 	$(MAKE) pkg-test
 
 build_before:
-	if [ $$EUID -ne 0 ]; \
+	if [ "$$EUID" != 0 ]; \
 	then \
 		sudo $(MAKE) pkg-dependencies-install; \
 	else \
