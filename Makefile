@@ -27,8 +27,7 @@ ci-all:
 	$(MAKE) pkg-test
 
 build_before:
-	echo "$$EUID"
-	if [ "$$EUID" = 0 ]; \
+	if [ `id -u` = 0 ]; \
 	then \
 		$(MAKE) pkg-dependencies-install; \
 	else \
