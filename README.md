@@ -9,6 +9,17 @@
  [![Travis build status][image-build-badge-travis]][url-build-link-travis]
  [![wercker build status][image-build-badge-wercker]][url-build-link-wercker]
 
+## About
+
+**libsysemul works as extension for C Library for owerriding functions calling nonexinsting system call**
+
+## Introduction
+
+## Building
+
+## Licensing
+ [MIT](LICENSE)
+
 
   | CI Name | Status |
   |-|-|
