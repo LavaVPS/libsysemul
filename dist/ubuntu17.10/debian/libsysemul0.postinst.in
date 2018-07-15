@@ -1,0 +1,34 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+LIBNAME=/lib/@@DEB_HOST_MULTIARCH@@/libsysemul.so.0
+
+libsysemul_need_install()
+{
+	if [ ! -f /etc/ld.so.preload ]
+	then
+		return 0
+	fi
+
+	if ! grep -q -e "^${LIBNAME}$" /etc/ld.so.preload
+	then
+		return 0
+	fi
+
+	return 1
+}
+
+if [ "$1" = "configure" ]
+then
+	if libsysemul_need_install
+	then
+		echo /lib/@@DEB_HOST_MULTIARCH@@/libsysemul.so.0 >> /etc/ld.so.preload
+	fi
+fi
+
+#DEBHELPER#
+
+exit 0
