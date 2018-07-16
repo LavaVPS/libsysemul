@@ -15,10 +15,33 @@
 
 ## Introduction
 
+## OS Compatibility
+
+libsysemul package has been tested successfully with:
+
+ * Debian 10 (buster)
+ * Debian 9 (stretch)
+ * Debian 8 (jessie)
+ * Debian 7 (wheey)
+ * Ubuntu 16.04 (xenial)
+ * Ubuntu 14.04 (trusty)
+ * Ubuntu 12.04 (precise)
+
+## Prerequisites
+
+ * GNU Make
+ * dpkg-dev
+ * fakeroot
+ * debhelper
+ * 
+
+## Installing
+
 ## Building
+ 
 
 ## Licensing
- [MIT](LICENSE)
+ [MIT](LICENSE.txt)
 
 
   | CI Name | Status |
