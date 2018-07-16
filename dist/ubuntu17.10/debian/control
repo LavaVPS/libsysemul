@@ -1,5 +1,5 @@
 Source: libsysemul
-Section: admin
+Section: libs
 Priority: optional
 Maintainer: lavavps <deb-packages@a.lavavps>
 Build-Depends: debhelper (>= 9)
