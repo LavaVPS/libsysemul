@@ -1,4 +1,4 @@
-libsysemul (0.0.1~ubuntu17.10) artful; urgency=medium
+libsysemul (0.0.1~ubuntu16.04) xenial; urgency=medium
 
   * Initial release
 
